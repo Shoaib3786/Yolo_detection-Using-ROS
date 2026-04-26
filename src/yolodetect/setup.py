@@ -24,6 +24,8 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            "imgpublish_node=yolodetect.imgPublish_node:main",
+            "imgdisplay_node=yolodetect.imgDisplay_node:main"
         ],
     },
 )

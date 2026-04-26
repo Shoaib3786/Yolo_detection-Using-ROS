@@ -1,0 +1,26 @@
+
+
+services:
+
+  myros_yolo:   # Service name use this name for starting compose
+    image: yolodetect_imgros:latest  # docker image name to make container of
+    container_name: container_1   # container name
+  
+     # mounting /src and also mounting host display for imshow() on container disp
+    volumes:
+     - $HOME/ros2_projects/yolodetection_rosws:/ros2_projects/yolodetection_rosws
+     - /tmp/.X11-unix:/tmp/.X11-unix:rw # it mounts display socket from host to container socket
+    
+#assign environment variable DISPLAY a value from host environment varaible DISPLAY whose value is  display session ID
+    environment: 
+      DISPLAY: $DISPLAY
+    
+    # used for keep terminal open after compose starts "docker run -it"
+    stdin_open: true  #stin_open works as -i in docker run -i
+    tty: true   # tty works as terminal -t in docker run -it
+
+    privileged: true
+
+    command: bash
+
+
